@@ -1,5 +1,4 @@
 import express from "express"
-import Quote from "inspirational-quotes"
 import bodyParser from "body-parser"
 import mongoose from "mongoose"
 import 'dotenv/config'
@@ -24,6 +23,10 @@ const notesSchema = {
 }
 
 const Note = mongoose.model("Note", notesSchema);
+
+app.get("/health", function(req, res) {
+    res.status(200).send()
+})
 
 app.get("/", function(req, res) {
     res.status(200).send(`Successfully reached Notes Keeper App backend.`)
